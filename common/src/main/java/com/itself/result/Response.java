@@ -29,7 +29,9 @@ public class Response<T> {
         this.code = code;
         this.message = message;
     }
-
+    public static Response<Void> error(String message){
+        return new Response(ReturnCode.UNDEFINED_ERROR.getCode(),message);
+    }
     public static Response<Void> error(Integer code, String message){
         return new Response(code,message);
     }
