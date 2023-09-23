@@ -1,0 +1,9 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: instantmessage # 服务名
+# cxf webservice  webservice接口统一路径前缀，所有的webservice接口都回多着一层访问路径
+cxf:
+  path: /webservice
+

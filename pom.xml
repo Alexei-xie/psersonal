@@ -14,6 +14,8 @@
         <module>designpatterns</module>
         <module>service</module>
         <module>example</module>
+        <module>leetcode</module>
+        <module>instantmessage</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -74,11 +76,11 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus.version}</version>
         </dependency>
-        <!--数据库启动类-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
+        <!-- &lt;!&ndash;数据库启动类&ndash;&gt; -->
+        <!-- <dependency> -->
+        <!--     <groupId>mysql</groupId> -->
+        <!--     <artifactId>mysql-connector-java</artifactId> -->
+        <!-- </dependency> -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
