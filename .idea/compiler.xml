@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="leetcode" />
         <module name="common" />
+        <module name="test" />
         <module name="designpatterns" />
         <module name="service" />
-        <module name="example" />
         <module name="instantmessage" />
+        <module name="leetcode" />
+        <module name="example" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
