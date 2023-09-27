@@ -4,11 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.itself.user.entity.UserPO;
-import com.itself.user.mappser.UserMapper;
+import com.itself.user.mapper.UserMapper;
 import com.itself.user.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,26 +16,19 @@ import java.util.List;
  * @Date 2022/07/09
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper,UserPO> implements UserService{
+public class UserServiceImpl extends ServiceImpl<UserMapper, UserPO> implements UserService {
 
-    private UserMapper userMapper;
-
-    @Autowired
-    public UserServiceImpl(UserMapper userMapper) {
-        this.userMapper = userMapper;
-    }
-
-
-
+    @Resource
+    private UserMapper localUserMapper;
 
 
     @Override
     public List<UserPO> listAll() {
-        return userMapper.selectList(new QueryWrapper<>());
+        return localUserMapper.selectList(new QueryWrapper<>());
     }
 
     @Override
     public Page<UserPO> listPage(int pageNum, int pageSize) {
-        return userMapper.selectPage(new Page<>(pageNum, pageSize),new QueryWrapper<>());
+        return localUserMapper.selectPage(new Page<>(pageNum, pageSize),new QueryWrapper<>());
     }
 }
