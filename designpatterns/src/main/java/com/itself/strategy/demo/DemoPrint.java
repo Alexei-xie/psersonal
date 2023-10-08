@@ -1,4 +1,4 @@
-package com.itself.strategy;
+package com.itself.strategy.demo;
 
 /**
  * 策略模式

@@ -1,4 +1,4 @@
-package com.itself.strategy;
+package com.itself.strategy.demo;
 
 /** 抽象策略
  * @Author xxw

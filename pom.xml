@@ -98,7 +98,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
-                <scope>test</scope>
+                <version>${spring-boot.version}</version>
             </dependency>
             <!--designpatterns服务的 cglib.proxy需要用到spring，不想引入common就单独引入这个spring-core罢了 -->
             <dependency>
