@@ -1,4 +1,4 @@
-package com.itself;
+package com.itself.test;
  public class ThreadDemo {
     public static void main(String[] args) {
         Thread thread = new Thread(() -> System.out.println(Thread.currentThread().getName()));
