@@ -49,6 +49,7 @@ public class ThreadPoolConfig implements AsyncConfigurer {
         //CallerRunsPolicy():满了调用线程执行，认为重要任务 DiscardPolicy():直接丢弃
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         executor.setThreadFactory(new MyThreadFactory(executor));
+        executor.setWaitForTasksToCompleteOnShutdown(true);//开启优雅停机
         executor.initialize();
         return executor;
     }
