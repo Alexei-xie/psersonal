@@ -32,7 +32,7 @@ class Demo01{
         Class<User> bClass = User.class;
         System.out.println(aClass == bClass); // 判断两种方式获取的class对象是否是同一个
         System.out.println("----");
-        Class<?> cClasss = Class.forName("com.itself.demo.bean.User");
+        Class<?> cClasss = Class.forName("com.itself.domain.User");
         System.out.println(aClass==cClasss);
     }
 }
