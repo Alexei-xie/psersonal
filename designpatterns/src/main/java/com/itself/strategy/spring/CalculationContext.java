@@ -1,7 +1,6 @@
 package com.itself.strategy.spring;
 
 import com.google.common.collect.Maps;
-import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -12,7 +11,6 @@ import java.util.Map;
  * @Date 2023/10/08
  */
 @Component
-@Getter
 public class CalculationContext {
     /**
      *  把策略角色（类型）key,和参数value放到Map中
@@ -23,11 +21,11 @@ public class CalculationContext {
 
     /**
      * 利用构造函数在项目启动的时候将策略实现类注册到 map里
-     * @param calculationStrategyMap
+     * @param strategyMap
      */
-    public CalculationContext(Map<String, CalculationStrategy> calculationStrategyMap) {
+    public CalculationContext(Map<String, CalculationStrategy> strategyMap) {
         this.calculationStrategyMap.clear();
-        this.calculationStrategyMap.putAll(calculationStrategyMap);
+        this.calculationStrategyMap.putAll(strategyMap);
     }
 
 
