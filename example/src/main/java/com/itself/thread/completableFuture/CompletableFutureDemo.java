@@ -1,5 +1,6 @@
 package com.itself.thread.completableFuture;
 
+import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
@@ -82,5 +83,72 @@ class CompletableFutureDemo3 {
             // task finish
             System.out.println("task finish");
         });
+    }
+}
+
+/**
+ * 等待所有方法结束后一并返回
+ */
+class CompletableFutureDemo4{
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        Random rand = new Random();
+        CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(1000 + rand.nextInt(1000));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                System.out.println("future1 done...");
+            }
+            return "abc";
+        });
+        CompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(1000 + rand.nextInt(1000));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                System.out.println("future2 done...");
+            }
+            return 111;
+        });
+        CompletableFuture<Void> future = CompletableFuture.allOf(future1, future2);
+        future.join(); //会等待所方法执行完成  使用future.get();也可以
+        System.out.println(future1.get()+future2.get());
+        System.out.println("end done");
+    }
+}
+/**
+ * 等待所有方法结束后一并返回（包含异常处理）
+ */
+class CompletableFutureExample {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        CompletableFuture<Integer> future1 = CompletableFuture.supplyAsync(() -> 111)
+                .exceptionally(ex -> {
+                    // 处理异常情况
+                    System.err.println("Exception occurred in future1: " + ex.getMessage());
+                    return 0; // 返回默认值或处理异常的结果
+                });
+
+        CompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> 1/0)
+                .exceptionally(ex -> {
+                    // 处理异常情况
+                    System.err.println("Exception occurred in future2: " + ex.getMessage());
+                    return 0; // 返回默认值或处理异常的结果
+                });
+
+        CompletableFuture<Integer> future3 = CompletableFuture.supplyAsync(() -> 333)
+                .exceptionally(ex -> {
+                    // 处理异常情况
+                    System.err.println("Exception occurred in future3: " + ex.getMessage());
+                    return 0; // 返回默认值或处理异常的结果
+                });
+
+        CompletableFuture<Void> allFutures = CompletableFuture.allOf(future1, future2, future3);
+
+        allFutures.join(); // 等待所有的CompletableFuture完成
+        int result = future1.join() + future2.join() + future3.join();
+        System.out.println("Sum: " + result);
     }
 }
