@@ -42,7 +42,6 @@ public class ExportManager implements Runnable {
         executor.execute(this);
     }
 
-
     @Override
     public void run() {
         //阻塞式获取数据
