@@ -25,6 +25,8 @@ public class CommonService implements ApplicationListener<WebServerInitializedEv
     public void onApplicationEvent(WebServerInitializedEvent event) {
         try {
             log.info("=====>>>CommonService start successful , IP Address:http:"+ Inet4Address.getLocalHost().getHostAddress()+":"+event.getWebServer().getPort());
+            log.warn("test warn log level ");
+            log.error("test error log level ");
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         }
