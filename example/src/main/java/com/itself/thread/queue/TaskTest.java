@@ -19,13 +19,15 @@ public class TaskTest {
     private ExportManager exportManager;
     @GetMapping("/test-export")
     public void testExport(){
+        exportManager.initCountDownLatch();
         // 模拟多个导出请求
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 5; i++) {
             ExportRequest request = new ExportRequest();
             request.setRequestId(String.valueOf(i));
             request.setService(new AserviceImpl());
             request.setUser(new User());
             exportManager.submitExportRequest(request);
+            System.out.println("controller -------:"+ i);
         }
     }
 }
