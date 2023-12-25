@@ -1,4 +1,4 @@
-package com.itself.redis;
+package com.itself.redis.queue;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

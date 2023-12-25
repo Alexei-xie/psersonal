@@ -2,7 +2,7 @@ package com.itself.thread.queue;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.itself.domain.User;
-import com.itself.redis.RedisRouteService;
+import com.itself.redis.queue.RedisRouteService;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

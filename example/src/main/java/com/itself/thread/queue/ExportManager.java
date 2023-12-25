@@ -3,7 +3,7 @@ package com.itself.thread.queue;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itself.domain.User;
-import com.itself.redis.RedisRouteService;
+import com.itself.redis.queue.RedisRouteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
