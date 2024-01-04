@@ -1,5 +1,7 @@
 package com.itself;
 
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,9 +11,6 @@ import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationListener;
 import org.springframework.scheduling.annotation.EnableAsync;
-
-import java.net.Inet4Address;
-import java.net.UnknownHostException;
 
 /**
  * @Author duJi
