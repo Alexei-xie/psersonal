@@ -17,7 +17,7 @@ public class CaffeineConfig {
     @Bean
     public Cache<String, Object> caffeineCache() {
         return Caffeine.newBuilder()
-                // 设置最后一次写入或访问后一分钟后过期
+                // 设置最后一次写入或访问后一小时后过期
                 .expireAfterWrite(60, TimeUnit.MINUTES)
                 // 初始的缓存空间大小
                 .initialCapacity(100)
