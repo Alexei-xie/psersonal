@@ -44,6 +44,7 @@
         <logback.version>1.2.11</logback.version>
         <caffeine.version>3.1.8</caffeine.version>
         <cxf-websocket.version>3.5.5</cxf-websocket.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
 
     </properties>
 
@@ -219,6 +220,17 @@
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <!-- mapstruct -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
