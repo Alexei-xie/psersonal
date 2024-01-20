@@ -1,9 +1,10 @@
 package com.itself.mapstruct.bean;
 
-import java.util.List;
-import java.util.Set;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * @Author: duJi
@@ -17,7 +18,9 @@ public class BeanPo {
 
     private String age;
 
-    private List<String> list;
+    private String newTime;
 
-    private Set<String> set;
+    private List<String> list1;
+
+    private Set<String> set1;
 }

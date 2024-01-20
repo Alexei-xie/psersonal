@@ -25,6 +25,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <spring-boot.version>2.7.0</spring-boot.version>
+        <lombok.version>1.18.26</lombok.version>
         <redisson.version>3.17.1</redisson.version>
         <pagehelper.version>1.4.2</pagehelper.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
@@ -44,7 +45,9 @@
         <logback.version>1.2.11</logback.version>
         <caffeine.version>3.1.8</caffeine.version>
         <cxf-websocket.version>3.5.5</cxf-websocket.version>
-        <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <org.projectlombok.version>1.18.26</org.projectlombok.version>
+        <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 
     </properties>
 
@@ -169,7 +172,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.26</version>
+                <version>${lombok.version}</version>
             </dependency>
             <!-- xml 与 bean  互转所需要的依赖   jdk8 包自带有，jdk11中被移除 -->
             <dependency>
@@ -227,14 +230,39 @@
                 <artifactId>mapstruct</artifactId>
                 <version>${mapstruct.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.mapstruct</groupId>
-                <artifactId>mapstruct-processor</artifactId>
-                <version>${mapstruct.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source> <!-- 适应你的Java版本 -->
+                    <target>11</target> <!-- 适应你的Java版本 -->
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${org.projectlombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>${lombok-mapstruct-binding.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 

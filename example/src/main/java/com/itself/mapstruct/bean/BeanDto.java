@@ -1,9 +1,10 @@
 package com.itself.mapstruct.bean;
 
-import java.util.List;
-import java.util.Set;
 import lombok.Data;
 import lombok.experimental.Accessors;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * @Author: duJi
@@ -15,9 +16,11 @@ public class BeanDto {
 
     private String name;
 
-    private String age;
+    private Integer age;
 
-    private List<String> list;
+    private String time;
+
+    private List<Integer> list;
 
     private Set<String> set;
 }
