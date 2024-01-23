@@ -25,7 +25,7 @@ public class ThreadLocalUtil {
     }
 
     /**
-     * 清楚缓存
+     * 清除缓存
      */
     public static void clear(){
         USER_THREAD_LOCAL.remove();

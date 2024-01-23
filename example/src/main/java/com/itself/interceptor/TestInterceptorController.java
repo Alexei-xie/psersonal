@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 具体拦截器已经挪移到common模块中
  * @Author duJi
  * @Date 2023/12/06
  */

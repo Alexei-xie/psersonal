@@ -1,5 +1,6 @@
 package com.itself;
 
+import cn.dev33.satoken.SaManager;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,7 @@ public class ExampleService implements ApplicationListener<WebServerInitializedE
     public void onApplicationEvent(WebServerInitializedEvent event) {
         try {
             log.info("=====>>>ExampleService start successful , IP Address:http://"+ Inet4Address.getLocalHost().getHostAddress()+":"+event.getWebServer().getPort());
+            log.info("Sa-token的配置：{}", SaManager.getConfig());
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         }
