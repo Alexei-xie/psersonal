@@ -26,7 +26,7 @@ public class ServiceApplication implements ApplicationListener<WebServerInitiali
     @Override
     public void onApplicationEvent(WebServerInitializedEvent event) {
         try {
-            log.info("=====>>>ServiceApplication start successful , IP Address:http:"+ Inet4Address.getLocalHost().getHostAddress()+":"+event.getWebServer().getPort());
+            log.info("=====>>>ServiceApplication start successful , IP Address:http://"+ Inet4Address.getLocalHost().getHostAddress()+":"+event.getWebServer().getPort());
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         }

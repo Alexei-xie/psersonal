@@ -24,7 +24,7 @@ public class InstantMessageService implements ApplicationListener<WebServerIniti
     @Override
     public void onApplicationEvent(WebServerInitializedEvent event) {
         try {
-            log.info("=====>>>InstantMessageService start successful , IP Address:http:"+ Inet4Address.getLocalHost().getHostAddress()+":"+event.getWebServer().getPort());
+            log.info("=====>>>InstantMessageService start successful , IP Address:http://"+ Inet4Address.getLocalHost().getHostAddress()+":"+event.getWebServer().getPort());
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         }
