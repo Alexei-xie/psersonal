@@ -1,9 +1,7 @@
 package com.itself.thread.queue;
 
-import lombok.extern.slf4j.Slf4j;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.concurrent.ThreadFactory;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Author duJi
@@ -17,7 +15,7 @@ public class CustomThreadFactory implements ThreadFactory{
     }
 
     @Override
-    public Thread newThread(@NotNull Runnable r) {
+    public Thread newThread( Runnable r) {
         Thread thread = new Thread(r);
         thread.setName(threadNamePrefix + thread.getId());
         //异常日志打印

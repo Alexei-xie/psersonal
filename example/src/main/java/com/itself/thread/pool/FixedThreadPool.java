@@ -1,6 +1,5 @@
 package com.itself.thread.pool;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 import java.util.concurrent.*;
@@ -66,7 +65,7 @@ class FixedThreadPool3 {
         // 创建线程工厂
         ThreadFactory threadFactory = new ThreadFactory() {
             @Override
-            public Thread newThread(@NotNull Runnable r) {
+            public Thread newThread(Runnable r) {
                 /*此处一定要把任务Runnable设置给新创建爱的线程*/
                 Thread thread = new Thread(r);
                 thread.setName("我的线程" + r.hashCode()); // 设置线程的命名规则

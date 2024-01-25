@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/sa-token/")
 @Api(tags = "sa-token")
-public class UserController {
+public class SaTokenController {
 
     // 测试登录，浏览器访问： http://localhost:8082/sa-token/doLogin?username=zhang&password=123456
     @ApiOperation(value = "登录",notes = "doLogin")
