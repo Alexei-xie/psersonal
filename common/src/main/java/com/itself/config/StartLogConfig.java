@@ -1,12 +1,12 @@
 package com.itself.config;
 
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * 系统启动日志信息打印
@@ -23,7 +23,7 @@ public class StartLogConfig implements ApplicationListener<WebServerInitializedE
     @Override
     public void onApplicationEvent(WebServerInitializedEvent event) {
         try {
-            InetAddress inetAddress = Inet4Address.getLocalHost();
+            InetAddress inetAddress = InetAddress.getLocalHost();
             int serverPort = event.getWebServer().getPort();
             System.out.println("#*#*#*#*#*#*#*#*#*\n" +
                                 "      #*        #*\n" +
@@ -35,10 +35,10 @@ public class StartLogConfig implements ApplicationListener<WebServerInitializedE
                                 "      #*          \n" +
                                 "      #*          \n" +
                                 "#*#*#*#*#*#*#*#*#*");
-            log.info("===>>>Application start successful , IP Address:http://"+ Inet4Address.getLocalHost().getHostAddress()+":"+serverPort);
+            log.info("===>>>Application start successful , IP Address:http://"+ InetAddress.getLocalHost().getHostAddress()+":"+serverPort);
             log.info("项目启动启动成功！接口文档地址: http://"+inetAddress.getHostAddress()+":"+serverPort+"/swagger-ui/index.html");
         } catch (UnknownHostException e) {
-            e.printStackTrace();
+           log.error("start log exception: {}" , e.getMessage());
         }
     }
 

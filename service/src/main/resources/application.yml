@@ -11,8 +11,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/demo?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8&useSSL=false
     driverClassName: com.mysql.jdbc.Driver
     username: root
-    password: root1234
-    #  Mac 的 MySQL 本地连接密码root1234
+    password: root
     type: com.alibaba.druid.pool.DruidDataSource
   redis:
     host: localhost #redis 服务器地址
