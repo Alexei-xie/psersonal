@@ -1,10 +1,11 @@
 package com.itself;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 /**
  * @Author duJi
  * @Date 2024/01/23
@@ -16,6 +17,6 @@ public class ApplicationInfoPrinter {
     */
     public static void print(ConfigurableApplicationContext context) throws UnknownHostException {
         ConfigurableEnvironment environment = context.getEnvironment();
-        log.info("=====>>>CommonService start successful , IP Address:http://"+ InetAddress.getLocalHost().getHostAddress() + ":" + environment.getProperty("server.port"));
+        log.info("=====>>>CommonService start successful , IP Address:http://"+ InetAddress.getLoopbackAddress().getHostAddress() + ":" + environment.getProperty("server.port"));
     }
 }
