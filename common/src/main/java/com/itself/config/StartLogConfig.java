@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
 
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * 系统启动日志信息打印
@@ -21,20 +22,26 @@ public class StartLogConfig implements ApplicationListener<WebServerInitializedE
 
     @Override
     public void onApplicationEvent(WebServerInitializedEvent event) {
-        InetAddress inetAddress = InetAddress.getLoopbackAddress();
-        int serverPort = event.getWebServer().getPort();
-        System.out.println("#*#*#*#*#*#*#*#*#*\n" +
-                            "      #*        #*\n" +
-                            "      #*        #*\n" +
-                            "      #*        #*\n" +
-                            "      #*        #*\n" +
-                            "      #*    #*  #*\n" +
-                            "      #*     #* #*\n" +
-                            "      #*          \n" +
-                            "      #*          \n" +
-                            "#*#*#*#*#*#*#*#*#*");
-        log.info("===>>>Application start successful , IP Address:http://"+ inetAddress.getHostAddress()+":"+serverPort);
-        log.info("项目启动启动成功！接口文档地址: http://"+inetAddress.getHostAddress()+":"+serverPort+"/swagger-ui/index.html");
+        InetAddress inetAddress = null;
+        try {
+            inetAddress = InetAddress.getLocalHost();
+            int serverPort = event.getWebServer().getPort();
+            System.out.println("#*#*#*#*#*#*#*#*#*\n" +
+                                "      #*        #*\n" +
+                                "      #*        #*\n" +
+                                "      #*        #*\n" +
+                                "      #*        #*\n" +
+                                "      #*    #*  #*\n" +
+                                "      #*     #* #*\n" +
+                                "      #*          \n" +
+                                "      #*          \n" +
+                                "#*#*#*#*#*#*#*#*#*");
+            log.info("===>>>Application start successful , IP Address:http://"+ inetAddress.getHostAddress()+":"+serverPort);
+            log.info("项目启动启动成功！接口文档地址: http://"+inetAddress.getHostAddress()+":"+serverPort+"/swagger-ui/index.html");
+        } catch (UnknownHostException e) {
+            log.error("start log exception:{}", e.getMessage());
+        }
+
     }
 
 }
