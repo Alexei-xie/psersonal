@@ -5,7 +5,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 /**
  * @Author duJi
  * @Date 2024/01/23
@@ -15,7 +14,7 @@ public class ApplicationInfoPrinter {
     /**
     * 启动成功之后，打印项目信息
     */
-    public static void print(ConfigurableApplicationContext context) throws UnknownHostException {
+    public static void print(ConfigurableApplicationContext context) {
         ConfigurableEnvironment environment = context.getEnvironment();
         log.info("=====>>>CommonService start successful , IP Address:http://"+ InetAddress.getLoopbackAddress().getHostAddress() + ":" + environment.getProperty("server.port"));
     }
