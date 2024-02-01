@@ -1,17 +1,16 @@
 package com.itself.mapstruct.convert;
 
-import com.google.common.collect.Lists;
 import com.itself.mapstruct.bean.BeanDto;
 import com.itself.mapstruct.bean.BeanPo;
+import java.util.List;
+import java.util.stream.Collectors;
+import org.assertj.core.util.Lists;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 import org.mockito.internal.util.collections.Sets;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @Author: duJi
@@ -22,6 +21,7 @@ public interface BeanConvert{
     BeanConvert INSTANCE = Mappers.getMapper( BeanConvert.class );
 
     BeanDto poToDto(BeanPo po);
+    List<BeanDto> poToDto(List<BeanPo> pos);
 
 
     @Mappings({
