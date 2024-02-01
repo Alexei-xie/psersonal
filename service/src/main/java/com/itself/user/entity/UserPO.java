@@ -8,6 +8,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import lombok.experimental.Accessors;
 
 /**
  * @Author xxw
@@ -15,6 +16,7 @@ import java.math.BigDecimal;
  */
 @Data
 @TableName("user")
+@Accessors(chain = true)
 public class UserPO implements Serializable {
     private static final long serialVersionUID = 1L;
     @TableId

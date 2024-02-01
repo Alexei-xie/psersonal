@@ -1,15 +1,18 @@
 package com.itself.user.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.itself.user.entity.UserPO;
 import com.itself.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.math.BigDecimal;
+import java.util.List;
+import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 /**
  * @Author xxw
@@ -40,5 +43,15 @@ public class Controller {
             }
         });
         log.info("=====");
+    }
+
+    @ApiOperation("updateAndInsert")
+    @GetMapping("/update-insert")
+    public void updateAndInsert(){
+        Page<UserPO> page = userService.listPage(1, 5);
+        List<UserPO> data = page.getRecords();
+        data.get(0).setAge(18).setName("duJi");
+        data.add(new UserPO().setName("xxw").setAge(25).setSex("M").setPrice(new BigDecimal("100000000")));
+        userService.saveOrUpdateBatch(page.getRecords());
     }
 }
