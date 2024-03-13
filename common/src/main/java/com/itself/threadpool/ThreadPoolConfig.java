@@ -2,6 +2,7 @@ package com.itself.threadpool;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -11,8 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * Description: 线程池配置
- * Author: <a href="https://github.com/zongzibinbin">abin</a>
- * Date: 2023-04-09
+
  */
 @Configuration
 @EnableAsync
@@ -21,8 +21,6 @@ public class ThreadPoolConfig implements AsyncConfigurer {
      * 项目共用线程池
      */
     public static final String EXECUTOR = "executor";
-
-
     /**
      * 处理异步方法调用时要使用的Executor实例
      */
@@ -52,6 +50,14 @@ public class ThreadPoolConfig implements AsyncConfigurer {
         executor.setWaitForTasksToCompleteOnShutdown(true);//开启优雅停机
         executor.initialize();
         return executor;
+    }
+
+    /**
+     * 使用demo
+     */
+    @Async(EXECUTOR)
+    public void execTask(){
+
     }
 
 }

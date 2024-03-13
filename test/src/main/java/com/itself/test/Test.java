@@ -1,7 +1,6 @@
 package com.itself.test;
 
-import java.util.ArrayList;
-import org.assertj.core.util.Lists;
+import java.math.BigDecimal;
 
 /**
  * @Author duJi
@@ -9,12 +8,7 @@ import org.assertj.core.util.Lists;
  */
 public class Test {
     public static void main(String[] args) {
-        ArrayList<String> list = Lists.newArrayList("1", "2", "3");
-        for (String s : list) {
-            System.out.println(s);
-            if (s.equals("2")){
-                break;
-            }
-        }
+        BigDecimal decimal =null;
+        System.out.println(decimal.negate());
     }
 }
