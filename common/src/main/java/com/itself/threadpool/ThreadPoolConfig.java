@@ -44,7 +44,10 @@ public class ThreadPoolConfig implements AsyncConfigurer {
         executor.setMaxPoolSize(10);
         executor.setQueueCapacity(200);
         executor.setThreadNamePrefix("thread-executor-");//设置线程名称
-        //CallerRunsPolicy():满了调用线程执行，认为重要任务 DiscardPolicy():直接丢弃
+        // CallerRunsPolicy: 不在新线程中执行任务，而是由调用者所在的线程来执行；
+        // AbortPolicy: 拒绝执行新任务，并抛出RejectedExecutionException异常；
+        // DiscardPolicy：丢弃当前将要加入队列的任务；
+        // DiscardOldestPolicy：丢弃任务队列中最旧的任务；
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         executor.setThreadFactory(new MyThreadFactory(executor));
         executor.setWaitForTasksToCompleteOnShutdown(true);//开启优雅停机
