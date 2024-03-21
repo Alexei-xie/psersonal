@@ -5,12 +5,12 @@ import com.itself.mapstruct.bean.BeanPo;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.assertj.core.util.Lists;
+import org.assertj.core.util.Sets;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
-import org.mockito.internal.util.collections.Sets;
 
 /**
  * @Author: duJi
@@ -43,7 +43,7 @@ public interface BeanConvert{
 
 
     static void main(String[] args) {
-        BeanDto dto = new BeanDto().setName("dto").setAge(1).setTime("2022").setList(Lists.newArrayList(1,2)).setSet(Sets.newSet("2"));
+        BeanDto dto = new BeanDto().setName("dto").setAge(1).setTime("2022").setList(Lists.newArrayList(1,2)).setSet(Sets.set("2"));
         BeanPo beanPo = BeanConvert.INSTANCE.dtoToPo(dto);
         System.out.println(beanPo);
     }

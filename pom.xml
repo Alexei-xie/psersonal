@@ -46,6 +46,7 @@
         <caffeine.version>3.1.8</caffeine.version>
         <cxf-websocket.version>3.5.5</cxf-websocket.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <mockito.version>3.12.4</mockito.version>
 
     </properties>
 
@@ -227,6 +228,12 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
                 <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version> <!-- 替换为您需要的版本号 -->
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
