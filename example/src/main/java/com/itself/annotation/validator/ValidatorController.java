@@ -22,7 +22,7 @@ public class ValidatorController {
 
     @PostMapping("/test")
     @ApiOperation("测试校验接口")
-    public Response<Object> test(@RequestBody @Valid Company company){
-        return Response.success("validator");
+    public Response<Boolean> test(@RequestBody @Valid Company company){
+        return Response.ok("validator");
     }
 }

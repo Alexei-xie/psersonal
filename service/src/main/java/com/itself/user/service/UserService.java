@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.itself.user.entity.UserPO;
 
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -23,4 +24,11 @@ public interface UserService extends IService<UserPO> {
      * @param pageSize  每页大小
      */
     Page<UserPO> listPage(int pageNum, int pageSize);
+
+    /**
+     * 导入数据
+     * @param inputStream 文件流
+     * @return 错误信息
+     */
+    List<String> importData(InputStream inputStream);
 }

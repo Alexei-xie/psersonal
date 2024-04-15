@@ -50,8 +50,9 @@ public class Controller {
     public void updateAndInsert(){
         Page<UserPO> page = userService.listPage(1, 5);
         List<UserPO> data = page.getRecords();
-        data.get(0).setAge(18).setName("duJi");
-        data.add(new UserPO().setName("xxw").setAge(25).setSex("M").setPrice(new BigDecimal("100000000")));
+        data.get(0).setAge(18);
+        data.get(0).setName("duJi");
+        data.add(UserPO.builder().name("xxw").age(25).sex("M").price(new BigDecimal("100000000")).build());
         userService.saveOrUpdateBatch(page.getRecords());
     }
 }
