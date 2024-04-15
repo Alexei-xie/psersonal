@@ -1,6 +1,7 @@
 package com.itself.exception;
 
 
+import com.itself.enums.ApiCode;
 import java.io.Serializable;
 
 /**
@@ -51,15 +52,15 @@ public class BusinessException extends RuntimeException implements Serializable{
         super(cause);
     }
 
-    public BusinessException(ReturnCode returnCode){
-        super(returnCode.getMsg());
-        this.code = returnCode.getCode();
-        this.msg = returnCode.getMsg();
+    public BusinessException(ApiCode apiCode){
+        super(apiCode.getMessage());
+        this.code = apiCode.getCode();
+        this.msg = apiCode.getMessage();
     }
 
-    public BusinessException(ReturnCode returnEum, String msg){
-        super(msg != null ? (returnEum.getMsg() + "," +msg) : returnEum.getMsg());
+    public BusinessException(ApiCode apiCode, String msg){
+        super(msg != null ? (apiCode.getMessage() + "," +msg) : apiCode.getMessage());
         this.msg =super.getMessage();
-        this.code = returnEum.getCode();
+        this.code = apiCode.getCode();
     }
 }
