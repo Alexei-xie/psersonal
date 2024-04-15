@@ -1,77 +1,139 @@
 package com.itself.result;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.itself.enums.ApiCode;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @Author xxw
  * @Date 2022/08/09
  *
  * 通用返回对象封装类
  */
-public class Response<T> {
-    private Integer code ;
-    private String message;
+@Data
+@Builder
+@AllArgsConstructor
+public class Response<T> implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 成功标志
+     */
+    private boolean success = true;
+
+    /**
+     * 返回处理消息
+     */
+    private String message = "OK!";
+
+    /**
+     * 响应代码
+     */
+    private Integer code = 0;
+
+    /**
+     * 返回数据对象 data
+     */
     private T data;
 
-    protected Response() {
+    /**
+     * 响应时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date time;
+
+    public Response() {
+        time  = new Date();
     }
 
-    protected Response(Integer code, String message, T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
+    public static Response<Boolean> result(boolean flag){
+        if(flag){
+            return ok();
+        }
+        return error();
     }
 
-    public Response(T data) {
-        this.data = data;
+    public static Response<Boolean> ok(){
+        return ok(true);
     }
 
-    public Response(Integer code, String message) {
-        this.code = code;
-        this.message = message;
-    }
-    public static Response<Void> error(String message){
-        return new Response(ReturnCode.UNDEFINED_ERROR.getCode(),message);
-    }
-    public static Response<Void> error(Integer code, String message){
-        return new Response(code,message);
-    }
-    public static Response<Void> error(Integer code,String message, Object data){
-        return new Response(code,message,data);
+    public static Response<Boolean> ok(String message){
+        return result(ApiCode.SUCCESS, message, true);
     }
 
-    public static <T>  Response<T> success(T data){
-        return new Response<T>(ReturnCode.SUCCESS.getCode(),"操作成功",data);
+    public static <T> Response<T> ok(T data){
+        return result(ApiCode.SUCCESS,data);
     }
 
-    public static Response<Void> success(Integer code, String message){
-        return new Response(code,message);
+    public static <T> Response<T> ok(T data, String message){
+        return result(ApiCode.SUCCESS,message,data);
     }
 
-
-    public Boolean success(){
-        return this.code == 200;
-    }
-    public Integer getCode() {
-        return code;
+    public static Response<Boolean> error(){
+        return error(false);
     }
 
-    public void setCode(Integer code) {
-        this.code = code;
+    public static <T> Response<T> error(T data){
+        return result(ApiCode.FAIL,data);
     }
 
-    public String getMessage() {
-        return message;
+    public static Response<Boolean> error(String message){
+        return result(ApiCode.FAIL,message,false);
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public static Response<Boolean> error(ApiCode apiCode){
+        return result(apiCode,null);
     }
 
-    public T getData() {
-        return data;
+    public static <T> Response<T> error(ApiCode apiCode, T data){
+        if (ApiCode.SUCCESS == apiCode){
+            throw new RuntimeException("失败结果状态码不能为" + ApiCode.SUCCESS.getCode());
+        }
+        return result(apiCode,data);
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public static Response<Object> error(int code, String msg) {
+        return Response.builder()
+                .code(code)
+                .message(msg)
+                .success(false)
+                .build();
+    }
+
+    public static Response<Map<String,Object>> error(String key, Object value){
+        Map<String,Object> map = new HashMap<>(1);
+        map.put(key,value);
+        return result(ApiCode.FAIL,map);
+    }
+
+    public static <T> Response<T> result(ApiCode apiCode, T data){
+        return result(apiCode,null,data);
+    }
+
+    public static <T> Response<T> result(ApiCode apiCode, String message, T data){
+        boolean success = false;
+        if (apiCode.getCode() == ApiCode.SUCCESS.getCode()){
+            success = true;
+        }
+        String apiMessage = apiCode.getMessage();
+        if (StringUtils.isBlank(message)){
+            message = apiMessage;
+        }
+        return (Response<T>) Response.builder()
+                .code(apiCode.getCode())
+                .message(message)
+                .data(data)
+                .success(success)
+                .time(new Date())
+                .build();
     }
 }

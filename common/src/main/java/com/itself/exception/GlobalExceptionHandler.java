@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
      * 处理所有未知异常
      */
     @ExceptionHandler(Exception.class)
-    public Response<Void> handleException(Exception exception){
+    public Response<Boolean> handleException(Exception exception){
         log.error(exception.getMessage(),exception);
        return Response.error(exception.getMessage());
     }
@@ -27,7 +27,7 @@ public class GlobalExceptionHandler {
      * 处理所有业务异常
      */
     @ExceptionHandler(BusinessException.class)
-    public Response<Void> handleBusinessException(BusinessException exception){
+    public Response<Object> handleBusinessException(BusinessException exception){
         log.error(exception.getMessage(),exception);
         return Response.error(exception.getCode(),exception.getMessage());
     }
