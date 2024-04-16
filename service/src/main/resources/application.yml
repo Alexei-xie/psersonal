@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8022
 spring:
   application:
     name: service # 服务名

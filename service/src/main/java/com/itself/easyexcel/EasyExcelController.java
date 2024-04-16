@@ -1,19 +1,23 @@
 package com.itself.easyexcel;
 
+import com.alibaba.fastjson.JSONObject;
+import com.itself.controller.BaseController;
 import com.itself.enums.ApiCode;
-import com.itself.result.Response;
+import com.itself.user.entity.UserPO;
 import com.itself.user.service.UserService;
+import com.itself.result.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.io.IOException;
 import java.util.List;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import lombok.RequiredArgsConstructor;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.compress.utils.Lists;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -25,10 +29,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Api(tags = "easyExcel测试接口")
 @RestController
 @RequestMapping("/easyexcel/test")
-@RequiredArgsConstructor
-public class EasyExcelController {
+public class EasyExcelController extends BaseController {
 
-    private final UserService userService;;
+    @Resource
+    private UserService userService;;
 
     @ApiOperation("导入Excel")
     @PostMapping("/import")
@@ -45,14 +49,30 @@ public class EasyExcelController {
             throw new RuntimeException(e);
         }
     }
-    @ApiOperation("导出Excel")
-    @PostMapping("/export")
-    public void exportExcel(@RequestParam MultipartFile multipartFile) {
+
+    /**
+     *
+     *
+     * @param jsonObject    String excelType = jsonObject.getStr("excelType");
+     *                      String ids = jsonObject.getStr("ids");
+     * @param response
+     */
+    @ApiOperation("同步导出Excel")
+    @PostMapping("/exportSync")
+    public void exportExcelSync(@RequestBody JSONObject jsonObject, HttpServletResponse response) {
+        String excelType = "xlsx";
+        List<UserPO> data = userService.listAll();
+        downloadExcel("personal用户管理" , excelType, response, data, UserPO.class);
+    }
+    @ApiOperation("异步导出Excel")
+    @PostMapping("/exportAsync")
+    public void exportExcelAsync() {
+
     }
 
     @ApiOperation("下载模板")
     @PostMapping("/downloadTemplate")
-    public void downloadTemplate(@RequestParam MultipartFile multipartFile) {
+    public void downloadTemplate(  ) {
     }
 
 

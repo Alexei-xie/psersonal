@@ -1,5 +1,6 @@
 package com.itself.user.entity;
 
+import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -27,6 +28,7 @@ import lombok.NoArgsConstructor;
 public class UserPO implements Serializable {
     private static final long serialVersionUID = 1L;
     @TableId(type = IdType.ASSIGN_ID)
+    @ExcelIgnore
     private String id;
     @ExcelProperty(value = "姓名")
     private String name;
