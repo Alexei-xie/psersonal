@@ -68,7 +68,7 @@ public class EasyExcelController extends BaseController {
     @ApiOperation("选择导出Excel多sheet页")
     @PostMapping("/exportSheets")
     public void exportExcelSheets(@RequestBody JSONObject jsonObject, HttpServletResponse response) {
-        String excelType = "xlsx";
+        String excelType = ".xlsx";
         List<EasyExcelSheet> excelSheets = initData();
         downloadMultipleSheetExcel("personal用户管理" + excelType, response, excelSheets);
     }
