@@ -26,9 +26,17 @@ public interface UserService extends IService<UserPO> {
     Page<UserPO> listPage(int pageNum, int pageSize);
 
     /**
-     * 导入数据
+     * 单sheet页导入数据
      * @param inputStream 文件流
      * @return 错误信息
      */
     List<String> importData(InputStream inputStream);
+
+    /**
+     * 多sheet页导入
+     * @param inputStream 文件流
+     * @return 错误信息
+     */
+    List<String> importDataSheets(InputStream inputStream);
+
 }

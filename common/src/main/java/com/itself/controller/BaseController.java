@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 public class BaseController {
 
     /**
-     * 同步导出excel文件
+     * 同步导出excel文件，不支持大数据量导出
      * @param fileName 文件名称
      * @param excelType 导出excel文件类型
      * @param response 响应体
@@ -54,7 +54,7 @@ public class BaseController {
     }
 
     /**
-     * 导出为多sheet页excel数据，数据量不大，可为多数据表结果集
+     * 导出为多sheet页excel数据，不支持大数据量导出，可为多数据表结果集
      * @param fileName 文件名称 如：personal用户管理xlsx
      * @param response  响应体
      * @param sheets 封装后的多sheet页model

@@ -35,13 +35,28 @@ public class EasyExcelController extends BaseController {
     @Resource
     private UserService userService;;
 
-    @ApiOperation("导入Excel")
-    @PostMapping("/import")
-    public Response<Object> importExcel(HttpServletRequest request) {
+    @ApiOperation("单sheet页导入Excel")
+    @PostMapping("/import/simple")
+    public Response<Object> importExcelSimple(HttpServletRequest request) {
         try {
             MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
             MultipartFile file = multipartRequest.getFile("files"); // 获取上传文件对象
             List<String> errorMsg = userService.importData(file.getInputStream());
+            if (CollectionUtils.isEmpty(errorMsg)){
+                return Response.ok(Lists.newArrayList(),"导入成功");
+            }
+            return Response.error(ApiCode.FAIL,errorMsg);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @ApiOperation("多sheet页导入Excel")
+    @PostMapping("/import/sheets")
+    public Response<Object> importExcelSheets(HttpServletRequest request) {
+        try {
+            MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+            MultipartFile file = multipartRequest.getFile("files"); // 获取上传文件对象
+            List<String> errorMsg = userService.importDataSheets(file.getInputStream());
             if (CollectionUtils.isEmpty(errorMsg)){
                 return Response.ok(Lists.newArrayList(),"导入成功");
             }
