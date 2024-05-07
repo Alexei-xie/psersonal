@@ -39,6 +39,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserPO> implements 
         QueryWrapper<UserPO> wrapper = new QueryWrapper<>();
         wrapper.eq("name",userPO.getName());
         // localUserMapper.selectPage(new Page<>(pageSize,pageNum),wrapper);
+        //自定义sql查询方式
         return localUserMapper.queryPageData(new Page<>(pageSize,pageNum),wrapper);
     }
 
