@@ -38,6 +38,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserPO> implements 
     public Page<UserPO> queryPageData(Integer pageSize, Integer pageNum, UserPO userPO) {
         QueryWrapper<UserPO> wrapper = new QueryWrapper<>();
         wrapper.eq("name",userPO.getName());
+        // localUserMapper.selectPage(new Page<>(pageSize,pageNum),wrapper);
         return localUserMapper.queryPageData(new Page<>(pageSize,pageNum),wrapper);
     }
 
