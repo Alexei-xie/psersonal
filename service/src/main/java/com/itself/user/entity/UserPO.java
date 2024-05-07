@@ -1,6 +1,6 @@
 package com.itself.user.entity;
 
-import com.alibaba.excel.annotation.ExcelIgnore;
+import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -25,10 +25,10 @@ import lombok.NoArgsConstructor;
 @TableName("user")
 @NoArgsConstructor
 @AllArgsConstructor
+@ExcelIgnoreUnannotated // 自动忽略不需要导入导出的字段，可替代@ExcelIgnore注解
 public class UserPO implements Serializable {
     private static final long serialVersionUID = 1L;
     @TableId(type = IdType.ASSIGN_ID)
-    @ExcelIgnore
     private String id;
     @ExcelProperty(value = "姓名")
     private String name;
