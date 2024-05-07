@@ -13,6 +13,9 @@ import java.util.List;
  */
 
 public interface UserService extends IService<UserPO> {
+
+    Page<UserPO> queryPageData(Integer pageSize, Integer pageNum, UserPO userPO);
+
     /**
      * 查询所有数据
      */

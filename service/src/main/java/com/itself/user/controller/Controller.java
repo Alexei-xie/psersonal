@@ -11,7 +11,10 @@ import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -28,6 +31,13 @@ public class Controller {
 
     @Resource
     private ThreadPoolTaskExecutor taskExecutor;
+
+    @PostMapping("/list-page")
+    @ApiOperation("listPage")
+    public void listPage(@RequestParam(name = "页数") Integer pageSize, @RequestParam(name = "页大小") Integer pageNum, @RequestBody UserPO userPO){
+        Page<UserPO> data = userService.queryPageData(pageSize,pageNum,userPO);
+        System.out.println(data.getRecords());
+    }
 
     @GetMapping("/test")
     @ApiOperation("test方法")

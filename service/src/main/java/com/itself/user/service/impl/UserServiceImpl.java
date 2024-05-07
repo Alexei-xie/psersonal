@@ -34,6 +34,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserPO> implements 
     @Resource
     private UserMapper localUserMapper;
 
+    @Override
+    public Page<UserPO> queryPageData(Integer pageSize, Integer pageNum, UserPO userPO) {
+        QueryWrapper<UserPO> wrapper = new QueryWrapper<>();
+        wrapper.eq("name",userPO.getName());
+        return localUserMapper.queryPageData(new Page<>(pageSize,pageNum),wrapper);
+    }
 
     @Override
     public List<UserPO> listAll() {
