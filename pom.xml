@@ -48,6 +48,7 @@
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <mockito.version>3.12.4</mockito.version>
         <easyexcel.version>3.3.3</easyexcel.version>
+        <beanUtils.version>1.9.4</beanUtils.version>
 
     </properties>
 
@@ -240,6 +241,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>easyexcel</artifactId>
                 <version>${easyexcel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${beanUtils.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

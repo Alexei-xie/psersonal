@@ -1,6 +1,6 @@
 package com.itself.thread.thread;
 
-import com.itself.utils.TimeUtils;
+import com.itself.utils.baseutils.TimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +23,7 @@ public class DeadThreadDemo {
         Thread t1 = new Thread(() -> {
             synchronized (obj) {
                 log.debug("lock A");
-                TimeUtils.sleep(1);
+                TimeUtil.sleep(1);
                 synchronized (object) {
                     log.debug("lock B");
                 }
@@ -32,7 +32,7 @@ public class DeadThreadDemo {
         Thread t2 = new Thread(() -> {
             synchronized (object) {
                 log.debug("lock B");
-                TimeUtils.sleep(1);
+                TimeUtil.sleep(1);
                 synchronized (obj) {
                     log.debug("lock A");
                 }
