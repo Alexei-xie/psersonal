@@ -5,6 +5,8 @@ import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
+import static com.itself.threadpool.ThreadPoolConfig.EXECUTOR;
+
 /**
  * 使用@EventListener注解：
  * 使用@EventListener注解可以将监听器自动注入到Spring事件框架中，
@@ -14,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class NoticeListener {
     @EventListener
-    @Async //表示此方法进行异步调用，还需要在application上添加EnableAsync注解配合生效
+    @Async(EXECUTOR) //表示此方法进行异步调用，还需要在application上添加EnableAsync注解配合生效
     public void onApplicationEvent(NoticeEvent event) {
       log.info("listener receive the event ! sleep two second... ");
         try {

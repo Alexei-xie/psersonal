@@ -28,7 +28,7 @@ class SpringTest {
      */
     @Test
     public void  test(){
-        Stu stu = new Stu();
+        Stu stu = null;
         assert stu != null : "对象为空"; //false走后面错误信息
         System.out.println(111);
     }

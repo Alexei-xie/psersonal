@@ -1,6 +1,9 @@
 package com.itself.utils.baseutils;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @Author: duJi
@@ -50,6 +53,23 @@ public class StrUtil {
 
     public static final String EMPTY_JSON = "{}";
 
+    /**
+     * 获取字符串中对应的数字序号
+     * @param stageName 智慧湾1期
+     * @return 1
+     */
+    public static Integer handleStageNo(String stageName){
+        if (StringUtils.isBlank(stageName)){
+            return null;
+        }
+        Pattern pattern = Pattern.compile("(\\d+)期");
+        Matcher matcher = pattern.matcher(stageName);
+        String result = "";
+        if (matcher.find()){
+            result = matcher.group(1);
+        }
+        return Integer.parseInt(result);
+    }
     /**
      * 字符串是否为非空白 空白的定义如下： <br>
      * 1、不为null <br>
