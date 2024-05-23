@@ -16,7 +16,6 @@
         <module>example</module>
         <module>leetcode</module>
         <module>instantmessage</module>
-        <module>test</module>
     </modules>
 
     <properties>
