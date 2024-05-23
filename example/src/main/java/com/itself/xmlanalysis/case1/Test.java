@@ -1,7 +1,7 @@
 package com.itself.xmlanalysis.case1;
 
-import com.google.common.collect.Lists;
 import com.itself.utils.XmlAnalysisUtil;
+import java.util.List;
 
 /**
  * Bean与xml互转
@@ -62,7 +62,7 @@ public class Test {
         MemberXml memberXml = new MemberXml();
         memberXml.setAddress("address");
         memberXml.setEmail("email");
-        memberXml.setItems(Lists.newArrayList(item1,item));
+        memberXml.setItems(List.of(item1,item));
         System.out.println(XmlAnalysisUtil.convertToXml(memberXml,"UTF-8"));
     }
 

@@ -43,7 +43,7 @@ public class EasyExcelController extends BaseController {
             MultipartFile file = multipartRequest.getFile("files"); // 获取上传文件对象
             List<String> errorMsg = userService.importData(file.getInputStream());
             if (CollectionUtils.isEmpty(errorMsg)){
-                return Response.ok(Lists.newArrayList(),"导入成功");
+                return Response.ok(List.of(),"导入成功");
             }
             return Response.error(ApiCode.FAIL,errorMsg);
         } catch (IOException e) {
@@ -58,7 +58,7 @@ public class EasyExcelController extends BaseController {
             MultipartFile file = multipartRequest.getFile("files"); // 获取上传文件对象
             List<String> errorMsg = userService.importDataSheets(file.getInputStream());
             if (CollectionUtils.isEmpty(errorMsg)){
-                return Response.ok(Lists.newArrayList(),"导入成功");
+                return Response.ok(List.of(),"导入成功");
             }
             return Response.error(ApiCode.FAIL,errorMsg);
         } catch (IOException e) {
@@ -106,7 +106,7 @@ public class EasyExcelController extends BaseController {
                 .headClass(UserPO.class)
                 .dataset(data1)
                 .build();
-        return Lists.newArrayList(dictVoSheet,itemDataSheet);
+        return List.of(dictVoSheet,itemDataSheet);
     }
 
     @ApiOperation("异步导出Excel")

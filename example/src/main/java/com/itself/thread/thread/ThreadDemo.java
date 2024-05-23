@@ -1,7 +1,6 @@
 package com.itself.thread.thread;
 
-import com.google.common.collect.Lists;
-
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -19,7 +18,7 @@ public class ThreadDemo {
         thread2.start();// runnable方式启动
 
         SingleCallable callable = new SingleCallable();
-        FutureTask<String> task = new FutureTask<>(callable);// 改返回值是线程返回值，通过 xx.get()方法获取
+        FutureTask<String> task = new FutureTask<>(callable);// 该返回值是线程返回值，通过 xx.get()方法获取
         new Thread(task).start();
         System.out.println(task.get());
     }
@@ -31,7 +30,7 @@ public class ThreadDemo {
 class SingleThread extends Thread {
     @Override
     public void run() {
-        Lists.newArrayList("11", "22", "33").forEach(System.out::println);
+        List.of("11", "22", "33").forEach(System.out::println);
         super.run();
     }
 }
@@ -42,7 +41,7 @@ class SingleThread extends Thread {
 class SingleRunnable implements Runnable {
     @Override
     public void run() {
-        Lists.newArrayList("aa", "bb", "cc").forEach(System.out::println);
+        List.of("aa", "bb", "cc").forEach(System.out::println);
     }
 
     public static void main(String[] args) {

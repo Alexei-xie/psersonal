@@ -43,7 +43,7 @@ public interface BeanConvert{
 
 
     static void main(String[] args) {
-        BeanDto dto = new BeanDto().setName("dto").setAge(1).setTime("2022").setList(Lists.newArrayList(1,2)).setSet(Sets.set("2"));
+        BeanDto dto = new BeanDto().setName("dto").setAge(1).setTime("2022").setList(List.of(1,2)).setSet(Sets.set("2"));
         BeanPo beanPo = BeanConvert.INSTANCE.dtoToPo(dto);
         System.out.println(beanPo);
     }

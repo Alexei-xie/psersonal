@@ -1,10 +1,8 @@
 package com.itself.genericity;
 
-import com.google.common.collect.Lists;
 import com.itself.domain.User;
 import com.itself.utils.CheckParamUtil;
-
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author xxw
@@ -15,7 +13,7 @@ public class GenericDemo {
         //指定类型
         Generic<String> generic = new Generic<>();
         //创建对应类型的集合
-        ArrayList<String> arrayList = Lists.newArrayList("苹果手机", "华为手机", "小米手机");
+        List<String> arrayList = List.of("苹果手机", "华为手机", "小米手机");
         //将集合填入类里面的集合
         for (String s : arrayList) {
             generic.addObject(s);
