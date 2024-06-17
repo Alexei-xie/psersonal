@@ -1,6 +1,10 @@
 server:
   port: 8082
 spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB # 设置读取文件大小
+      max-request-size: 100MB # 设置读取文件大小
   application:
     name: example # 服务名
   mvc: # swagger需要修改MVC的匹配策略，不然会不显示接口
