@@ -43,9 +43,9 @@ public class Test {
         // .headRowNumber(0)表示从第1行开始读
         // LinkedHashMap<Integer,String>表示一行里面有多少列
         List<LinkedHashMap<Integer,String>> data = EasyExcel.read(file.getInputStream()).sheet().headRowNumber(0).doReadSync();
-        LinkedHashMap<Integer, String> dateMap = data.get(0);//
+        LinkedHashMap<Integer, String> dateMap = data.get(1);//读取excel里的第二行数据
         String date = dateMap.get(0);//读取第一列数据
-        LinkedHashMap<Integer, String> companyMap = data.get(1);
+        LinkedHashMap<Integer, String> companyMap = data.get(2);//读取excel里的第三行数据
         String company = companyMap.get(0);
 
         List<BalanceSheetVO> datas = new ArrayList<>();
