@@ -27,7 +27,7 @@ class SpringTest {
      * assert关键字通常用于调试和测试阶段，在程序正式运行时通常会被禁用，以避免性能损失。
      */
     @Test
-    public void  test(){
+    public void test(){
         Stu stu = null;
         assert stu != null : "对象为空"; //false走后面错误信息
         System.out.println(111);
