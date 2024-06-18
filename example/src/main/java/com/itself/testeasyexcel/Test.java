@@ -56,7 +56,8 @@ public class Test {
             }
             @Override
             public void doAfterAllAnalysed(AnalysisContext context) {
-
+                // 最后会走这里，在这里做新增
+                System.out.println(datas);
             }
         }).sheet().headRowNumber(4).doRead();//索引4，实际是第5行，详情可见 资产负债表excel
 
