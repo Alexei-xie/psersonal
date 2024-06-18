@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,19 +22,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
  * @Date: 2024-06-17
  **/
 @RestController
-@Api(tags = "test11111")
+@Api(tags = "testEasyExcel")
 @RequestMapping("/excel")
 public class Test {
 
 
-
-    @GetMapping("/test")
-    @ApiOperation("132131")
-    public String testMock(){
-        return "122;";
-    }
-
-
+    @ApiOperation("ImportExcel")
     @PostMapping("/import")
     public String test(HttpServletRequest request) throws IOException {
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
