@@ -16,33 +16,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class BalanceSheetVO {
     /**
-     * 纳税人识别号Id COLUMN:TAXPAYER_ID
-     */
-    private String taxpayerId;
-    /**
-     * 纳税人识别号 COLUMN:TAXPAYER_NO
-     */
-    private String taxpayerNo;
-    /**
-     * 纳税人名称 COLUMN:TAXPAYER_NAME
-     */
-    private String taxpayerName;
-
-    /**
-     * 申报年份 COLUMN:DECLARE_YEAR
-     */
-    private Integer declareYear;
-
-    /**
-     * 申报期间 COLUMN:DECLARE_PERIOD
-     */
-    private Integer declarePeriod;
-    /**
-     * 公司代码 COLUMN:COMPANY_CODE
-     */
-    private String companyCode;
-
-    /**
      * 报表名称 COLUMN:REPORT_NAME
      */
     private String reportName;
