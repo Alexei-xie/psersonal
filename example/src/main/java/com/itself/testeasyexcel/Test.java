@@ -34,7 +34,7 @@ public class Test {
         MultipartFile file = multipartRequest.getFile("files"); // 获取上传文件对象
         // .headRowNumber(0)表示从第1行开始读
         // LinkedHashMap<Integer,String>表示一行里面有多少列
-        List<LinkedHashMap<Integer,String>> data = EasyExcel.read(file.getInputStream()).sheet().headRowNumber(0).doReadSync();
+        List<LinkedHashMap<Integer,String>> data = EasyExcel.read(file.getInputStream()).sheet(0).headRowNumber(0).doReadSync();
         LinkedHashMap<Integer, String> dateMap = data.get(1);//读取excel里的第二行数据
         String date = dateMap.get(0);//读取第一列数据
         LinkedHashMap<Integer, String> companyMap = data.get(2);//读取excel里的第三行数据
@@ -51,7 +51,7 @@ public class Test {
                 // 最后会走这里，在这里做新增
                 System.out.println(datas);
             }
-        }).sheet().headRowNumber(4).doRead();//索引4，实际是第5行，详情可见 资产负债表excel
+        }).sheet(0).headRowNumber(4).doRead();//索引4，实际是第5行，详情可见 资产负债表excel
 
         // 第三行第二列（B3）
         return "success";
