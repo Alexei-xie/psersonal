@@ -90,6 +90,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserPO> implements 
                 public void doAfterAllAnalysed(AnalysisContext analysisContext) {
                     saveBatch(cachedDataList);
                 }
+
+                /**
+                 * 异常处理逻辑
+                 */
+                @Override
+                public void onException(Exception exception, AnalysisContext context) throws Exception {
+                    if (exception instanceof ExcelDataConvertException) {
+                        ExcelDataConvertException ex = (ExcelDataConvertException) exception;
+                        System.err.println("数据转换错误：行 " + ex.getRowIndex() + " 列 " + ex.getColumnIndex());
+                    } else {
+                        throw exception;
+                    }
+                }
             }).sheet().doRead();
         } catch (ExcelDataConvertException e) {
             log.error(String.format("cell={}, msg={}",e.getCellData().getStringValue(), e.getMessage()), e);
