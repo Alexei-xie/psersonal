@@ -1,9 +1,11 @@
 package com.itself.test;
 
+import org.junit.jupiter.api.Test;
+
+import java.io.File;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.junit.jupiter.api.Test;
 
 /**
  * @Author: duJi
@@ -17,6 +19,22 @@ public class TestDemo {
         // System.out.println(extractChineseCharacters(name));
         String date = "2022年12月";
         System.out.println(Arrays.toString(extractYearAndMonth(date)));
+    }
+    @Test
+    public void test1(){
+        String path = "E:\\tmp\\work\\Tomcat\\localhost\\api-file\\tmp\\tmp\\data\\file\\20240627\\cit";
+        File dir = new File(path);
+
+        if (!dir.exists()) {
+            boolean created = dir.mkdirs();
+            if (created) {
+                System.out.println("Directories created successfully");
+            } else {
+                System.out.println("Failed to create directories");
+            }
+        } else {
+            System.out.println("Directories already exist");
+        }
     }
 
     /**

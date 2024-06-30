@@ -9,11 +9,6 @@ import com.itself.user.entity.UserPO;
 import com.itself.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import java.io.IOException;
-import java.util.List;
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * @Author: duJi
@@ -72,7 +73,7 @@ public class EasyExcelController extends BaseController {
      *                      String ids = jsonObject.getStr("ids");
      * @param response
      */
-    @ApiOperation("选择导出Excel")
+    @ApiOperation("选择导出Excel单sheet页")
     @PostMapping("/exportSync")
     public void exportExcelSync(@RequestBody JSONObject jsonObject, HttpServletResponse response) {
         String excelType = "xlsx";

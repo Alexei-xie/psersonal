@@ -26,7 +26,7 @@ public class LogAspect {
      * 此处的切点是注解的方式，也可以用包名的方式达到相同的效果
      */
     @Pointcut("execution(* com.itself.aop.service.impl.*.*(..))")
-    //    @Pointcut("@annotation(com.itself.annotation.OperationLogDetail)")
+    // @Pointcut("@annotation(com.itself.aop.annotation.OperationLogDetail)")
     public void operationLog() {
     }
     @Before("operationLog()")

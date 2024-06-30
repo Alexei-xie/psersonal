@@ -14,14 +14,15 @@ import com.itself.listener.UserImportListener;
 import com.itself.user.entity.UserPO;
 import com.itself.user.mapper.UserMapper;
 import com.itself.user.service.UserService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Resource;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
 
 /**
  * @Author xxw
@@ -37,7 +38,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserPO> implements 
     @Override
     public Page<UserPO> queryPageData(Integer pageSize, Integer pageNum, UserPO userPO) {
         QueryWrapper<UserPO> wrapper = new QueryWrapper<>();
-        wrapper.eq("name",userPO.getName());
+        wrapper.eq( StringUtils.isNotBlank(userPO.getName()),"name",userPO.getName());
         // localUserMapper.selectPage(new Page<>(pageSize,pageNum),wrapper);
         //自定义sql查询方式
         return localUserMapper.queryPageData(new Page<>(pageSize,pageNum),wrapper);

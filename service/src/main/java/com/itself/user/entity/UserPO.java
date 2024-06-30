@@ -6,13 +6,16 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.itself.annotation.Dict;
+import com.itself.converter.DictConverter;
 import com.itself.utils.CustomerBigDecimalSerialize;
-import java.io.Serializable;
-import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * 文件导入不能使用 @Accessors(chain = true)注解
@@ -30,11 +33,13 @@ public class UserPO implements Serializable {
     private static final long serialVersionUID = 1L;
     @TableId(type = IdType.ASSIGN_ID)
     private String id;
-    @ExcelProperty(value = "姓名")
+    @Dict(code = "NAME")
+    @ExcelProperty(value = "姓名",converter = DictConverter.class)
     private String name;
     @ExcelProperty(value = "年纪")
     private Integer age;
-    @ExcelProperty(value = "性别")
+    @Dict(code = "SEX")
+    @ExcelProperty(value = "性别",converter = DictConverter.class)
     private String sex;
     @ExcelProperty(value = "价格")
     @JsonSerialize(using = CustomerBigDecimalSerialize.class)
