@@ -5,6 +5,7 @@ import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.excel.write.style.column.LongestMatchColumnWidthStyleStrategy;
+import com.itself.converter.CustomDateConverter;
 import com.itself.domain.EasyExcelSheet;
 import com.itself.utils.FileUtil;
 import java.net.URLEncoder;
@@ -46,7 +47,7 @@ public class BaseController {
                 excelTypeEnum = ExcelTypeEnum.CSV;
                 response.setContentType("text/csv");
             }
-            EasyExcel.write(response.getOutputStream(), head).excelType(excelTypeEnum).sheet(fileName).doWrite(data);
+            EasyExcel.write(response.getOutputStream(), head).registerConverter(new CustomDateConverter()).excelType(excelTypeEnum).sheet(fileName).doWrite(data);
         } catch (Exception e) {
             log.error("文件【{}】下载失败", fileName);
             log.error(e.getMessage(), e);
@@ -78,7 +79,7 @@ public class BaseController {
                 excelTypeEnum = ExcelTypeEnum.CSV;
                 response.setContentType("text/csv");
             }
-            ExcelWriter excelWriter = EasyExcel.write(response.getOutputStream()).excelType(excelTypeEnum).build();
+            ExcelWriter excelWriter = EasyExcel.write(response.getOutputStream()).registerConverter(new CustomDateConverter()).excelType(excelTypeEnum).build();
             sheets.forEach(sheet -> {
                 // sheet页位置，sheet页名称
                 WriteSheet writeSheet = EasyExcel.writerSheet(sheet.getSheetIndex(), sheet.getSheetName())

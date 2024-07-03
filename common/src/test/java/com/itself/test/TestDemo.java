@@ -1,11 +1,8 @@
 package com.itself.test;
 
-import org.junit.jupiter.api.Test;
-
-import java.io.File;
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.junit.jupiter.api.Test;
 
 /**
  * @Author: duJi
@@ -17,24 +14,8 @@ public class TestDemo {
         // String name = "流动资产：\n" +
         //         "CURRENT ASSETS";
         // System.out.println(extractChineseCharacters(name));
-        String date = "2022年12月";
-        System.out.println(Arrays.toString(extractYearAndMonth(date)));
-    }
-    @Test
-    public void test1(){
-        String path = "E:\\tmp\\work\\Tomcat\\localhost\\api-file\\tmp\\tmp\\data\\file\\20240627\\cit";
-        File dir = new File(path);
-
-        if (!dir.exists()) {
-            boolean created = dir.mkdirs();
-            if (created) {
-                System.out.println("Directories created successfully");
-            } else {
-                System.out.println("Failed to create directories");
-            }
-        } else {
-            System.out.println("Directories already exist");
-        }
+        String date = "WMP240502085226810622、WMP240324102938378039、WMP240223160253304704、WMP231119184809258983、WMP231025063129781501、WMP231007140200614105、WMP230830101252220627、WMP230808111655175857、WMP230802101627231475、WMP230801182421284214、WMP230711110537396093、WMP230628131431476590、WMP230614140028245068、WMP230610133844396540、WMP230606200939382028、WMP230606200411146207、WMP230405125134757411、WMP230223";
+        System.out.println(date.length());
     }
 
     /**
