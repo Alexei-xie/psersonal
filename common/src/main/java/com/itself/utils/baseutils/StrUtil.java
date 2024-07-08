@@ -1,9 +1,10 @@
 package com.itself.utils.baseutils;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * @Author: duJi
@@ -52,6 +53,26 @@ public class StrUtil {
     public static final String HTML_SIM = "&sim;";
 
     public static final String EMPTY_JSON = "{}";
+
+
+    /**
+     * 对姓名进行脱敏，保留第一个字符，其余字符替换为 *
+     */
+    public static String desName(String name){
+        name = name.trim();
+        if (StringUtils.isBlank(name)){
+            return "";
+        }
+        // 如果姓名长度为1，则不需要脱敏
+        if (name.length() == 1) {
+            return name;
+        }
+        // 姓名长度大于2的情况
+        StringBuilder desensitizedName = new StringBuilder();
+        desensitizedName.append(name.charAt(0)); // 保留第一个字符
+        desensitizedName.append("*".repeat(name.length() - 1)); // 将其他字符替换为*
+        return desensitizedName.toString();
+    }
 
     /**
      * 获取字符串中对应的数字序号
