@@ -200,12 +200,12 @@ public class NumberUtil {
      */
     public static BigDecimal div(BigDecimal v1, BigDecimal v2, RoundingMode roundingMode) {
         Assert.notNull(v2, "Divisor must be not null !");
-        assert v2.compareTo(BigDecimal.ZERO) == 0  : "除数不可以为零！";
+        assert v2.compareTo(BigDecimal.ZERO) != 0  : "除数不可以为零！";
         if(null == v1) {
             return new BigDecimal("0");
         }
 
-        return v1.divide(v2, roundingMode);
+        return v1.divide(v2,2, roundingMode);
     }
 
     public static void main(String[] args) {
