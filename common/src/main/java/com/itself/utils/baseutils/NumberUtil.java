@@ -1,8 +1,9 @@
 package com.itself.utils.baseutils;
 
+import org.springframework.util.Assert;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import org.springframework.util.Assert;
 
 /**
  * @Author: duJi
@@ -195,20 +196,21 @@ public class NumberUtil {
      *
      * @param v1 被除数
      * @param v2 除数
+     * @param scale 保留小数位
      * @param roundingMode 保留小数的模式 {@link RoundingMode} 四舍五入：RoundingMode.HALF_UP
      * @return 两个参数的商
      */
-    public static BigDecimal div(BigDecimal v1, BigDecimal v2, RoundingMode roundingMode) {
-        Assert.notNull(v2, "Divisor must be not null !");
-        assert v2.compareTo(BigDecimal.ZERO) == 0  : "除数不可以为零！";
+    public static BigDecimal div(BigDecimal v1, BigDecimal v2,Integer scale, RoundingMode roundingMode) {
+        Assert.notNull(v2, "除数不可以为零空!");
+        assert v2.compareTo(BigDecimal.ZERO) != 0  : "除数不可以为零！";
         if(null == v1) {
             return new BigDecimal("0");
         }
 
-        return v1.divide(v2, roundingMode);
+        return v1.divide(v2,scale, roundingMode);
     }
 
     public static void main(String[] args) {
-        System.out.println(div(new BigDecimal("100"), new BigDecimal("10"), RoundingMode.HALF_UP));
+        System.out.println(div(new BigDecimal("100"), new BigDecimal("10"),2, RoundingMode.HALF_UP));
     }
 }
