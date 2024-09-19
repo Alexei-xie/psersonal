@@ -123,5 +123,9 @@
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
     </dependencies>
 </project>
