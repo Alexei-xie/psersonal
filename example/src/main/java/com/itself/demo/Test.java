@@ -1,8 +1,8 @@
 package com.itself.demo;
 
+import cn.hutool.core.date.DateUtil;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,8 +12,9 @@ import java.util.regex.Pattern;
  **/
 public class Test {
     public static void main(String[] args) {
-        List<String> list = List.of("配套a1", "配套b2", "配套v3", "配套d4", "配套e5");
-        System.out.println(list.contains("配套a1"));
+        String period = 2024 + "-" + String.format("%02d", 4);
+        System.out.println(period);
+        System.out.println(DateUtil.date());
     }
     private static Integer handleStageNo(String stageName) {
         if (StringUtils.isBlank(stageName)) {

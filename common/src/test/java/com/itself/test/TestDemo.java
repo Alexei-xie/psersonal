@@ -1,5 +1,6 @@
 package com.itself.test;
 
+import com.alibaba.fastjson.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import java.util.regex.Matcher;
@@ -12,13 +13,29 @@ import java.util.regex.Pattern;
 public class TestDemo {
     @Test
     public void test(){
-        // String name = "流动资产：\n" +
-        //         "CURRENT ASSETS";
-        // System.out.println(extractChineseCharacters(name));
+        System.out.println(Integer.parseInt("202412"));
+
+
+
     }
     @Test
     public void test1(){
-
+        String str = "[{\"LIFNR_TO\":\"12222\",\"LIFNR_FROM\":\"10000\"},{\"LIFNR_TO\":\"12222\",\"LIFNR_FROM\":\"10000\"}]";
+        String paramBody = "{\n" +
+                "    \"IS_INPUT\": {\n" +
+                "        \"MANDT\": \"" + 2 + "\",\n" +
+                "        \"BUKRS\": \"" + 2 + "\",\n" +
+                "        \"RYEAR\": \"" + 2 + "\",\n" +
+                "        \"ZPERIOD\": \"" + 2 + "\",\n" +
+                "        \"ITEM2\": {\n" +
+                "            \"item\": "+str+"\n" +
+                "        }\n" +
+                "    },\n" +
+                "    \"OT_OUTPUT\":\"\"\n" +
+                "}";
+        JSONObject jsonObject = JSONObject.parseObject(paramBody);
+        System.out.println(String.valueOf(jsonObject.get("ITEM2")));
+        System.out.println();
     }
 
     /**

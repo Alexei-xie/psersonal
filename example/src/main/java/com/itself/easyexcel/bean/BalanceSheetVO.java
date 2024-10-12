@@ -1,4 +1,4 @@
-package com.itself.testeasyexcel.bean;
+package com.itself.easyexcel.bean;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.AllArgsConstructor;
