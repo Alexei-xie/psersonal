@@ -51,7 +51,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("个人练习生")
                 .description("personal-demo")
-                .contact(new Contact("镀己","","x15237168213@163.com")) //创建人信息
+                .contact(new Contact("镀己","","Alexei_Xie@163.com@163.com")) //创建人信息
                 .version("1.0")
                 .build();
     }
