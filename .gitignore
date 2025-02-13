@@ -1,44 +1,135 @@
-*.class
-*.jar
-*/build
-build
-out
-*/bin
-.idea
-.idea/
-*/target
-.gradle
-!gradle/wrapper/gradle-wrapper.jar
-**/gradle-app.setting
-.DS_Store
-target
-#忽略各类打包文件
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.tar
-*.log.*
+# Java相关  
+*.class  
+*.jar  
+*.war  
+*.ear  
 
-#忽略virtual machine crash logs文件
-hs_err_pid*
+# 编译输出目录  
+/bin/  
+/build/  
+/target/  
 
-#忽略日志文件
-#日志文件也可能是*.tar.gz或*.tar压缩处理过的
-*.log
-*.tar.gz.log
-*.tar.log
+# Maven  
+.mvn/  
+!**/src/main/**/mvn-wrapper.properties  
+!**/src/main/**/mvnw  
+!**/src/main/**/mvnw.cmd  
+pom.xml.tag  
+pom.xml.releaseBackup  
+pom.xml.versionsBackup  
+pom.xml.next  
+release.properties  
+dependency-reduced-pom.xml  
+buildNumber.properties  
 
-#忽略掉临时文件
-*.bak
+# Gradle  
+.gradle/  
+build/  
+!gradle-wrapper.jar  
+.gradle-cache/  
 
-#忽略eclipse项目描述文件
-*.classpath
-*.project
-*.prefs
+# IntelliJ IDEA  
+.idea/  
+*.iml  
+*.iws  
+out/  
 
-**/.settings/
-**/.metadata/
-*.iml
-**/.idea/
-/.idea/
+# Eclipse  
+.project  
+.classpath  
+.settings/  
+*.launch  
+
+# VS Code  
+.vscode/  
+
+# NetBeans  
+/nbproject/private/  
+/nbbuild/  
+/dist/  
+/nbdist/  
+/.nb-gradle/  
+
+# Logs  
+*.log  
+logs/  
+*.pid  
+*.seed  
+
+# 操作系统文件  
+.DS_Store  
+Thumbs.db  
+desktop.ini  
+
+# 环境配置  
+.env  
+.env.local  
+.env.*.local  
+
+# Docker  
+docker-compose.override.yml  
+docker-compose.override.yaml  
+*.dockerfile  
+*.dockerignore  
+
+# Kubernetes  
+*.yaml  
+*.yml  
+
+# Swagger  
+swagger-ui/  
+
+# 临时文件  
+*.tmp  
+*.swp  
+*.swo  
+*.bak  
+*.orig  
+
+# Lombok  
+.lombok/  
+
+# JRebel  
+*.jrebel  
+
+# SonarQube  
+.sonar/  
+report-task.txt  
+
+# IntelliJ IDEA运行时文件  
+.idea_modules/  
+.idea/workspace.xml  
+.idea/tasks.xml  
+.idea/dictionaries/  
+.idea/libraries/  
+.idea/vcs.xml  
+.idea/modules.xml  
+
+# 本地工具配置  
+*.local  
+*.bak  
+*.backup  
+*.swp  
+*.swo  
+*.tmp  
+*.log  
+
+# Node.js（如果微服务中包含前端）  
+node_modules/  
+npm-debug.log*  
+yarn-debug.log*  
+yarn-error.log*  
+
+# CI/CD  
+/.github/workflows/  
+*.ci  
+*.ci.yml  
+*.ci.yaml  
+
+# 其他  
+*.lock  
+*.key  
+*.pem  
+*.crt  
+*.p12  
+*.pfx
