@@ -5,6 +5,7 @@ build
 out
 */bin
 .idea
+.idea/
 */target
 .gradle
 !gradle/wrapper/gradle-wrapper.jar

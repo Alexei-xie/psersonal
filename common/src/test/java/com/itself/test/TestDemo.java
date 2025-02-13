@@ -1,10 +1,12 @@
 package com.itself.test;
 
 import com.alibaba.fastjson.JSONObject;
-import org.junit.jupiter.api.Test;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.junit.jupiter.api.Test;
 
 /**
  * @Author: duJi
@@ -13,7 +15,10 @@ import java.util.regex.Pattern;
 public class TestDemo {
     @Test
     public void test(){
-        System.out.println(Integer.parseInt("202412"));
+        Map<String,Object> map = new HashMap<>();
+        map.put("ids",List.of("62442c72254e4e7794961248561089e3"));
+        map.put("templateCode","GA007");
+        System.out.println(map);
 
 
 
