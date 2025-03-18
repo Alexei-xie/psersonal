@@ -7,7 +7,7 @@ import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.excel.write.style.column.LongestMatchColumnWidthStyleStrategy;
 import com.itself.converter.CustomDateConverter;
 import com.itself.domain.EasyExcelSheet;
-import com.itself.utils.FileUtil;
+import com.itself.utils.fileUtils.FileUtil;
 import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.List;
