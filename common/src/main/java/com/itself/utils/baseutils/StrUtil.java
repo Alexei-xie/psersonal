@@ -12,6 +12,11 @@ import java.util.regex.Pattern;
  **/
 public class StrUtil {
 
+
+    public static final Pattern humpPattern = Pattern.compile("[A-Z]");
+
+    public static final Pattern linePattern = Pattern.compile("_(\\w)");
+
     private static final char[] WHITESPACE_CHARS = {' ', '\t', '\n', '\f', '\r'};
     public static final int INDEX_NOT_FOUND = -1;
 
@@ -456,5 +461,38 @@ public class StrUtil {
             return EMPTY;
         }
         return str.substring(pos + separator.length());
+    }
+
+    /**
+     * 驼峰转下划线
+     */
+    public static String humpToLine(String str){
+        Matcher matcher = humpPattern.matcher(str);
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            matcher.appendReplacement(sb, "_" + matcher.group(0).toLowerCase());
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
+    }
+
+
+    /**
+     * 下划线转驼峰
+     */
+    public static String lineToHump(String str) {
+        str = str.toLowerCase();
+        Matcher matcher = linePattern.matcher(str);
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            matcher.appendReplacement(sb, matcher.group(1).toUpperCase());
+        }
+        matcher.appendTail(sb);
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(humpToLine("userName2Asc"));
+        System.out.println(lineToHump("user_name_2_asc"));
     }
 }
